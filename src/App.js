@@ -1,13 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
 import Base from './Components/Base';
+import ModuleProvider from './Store/ModuleProvider';
 
 
 function App() {
   return (
-    
     <>
-    <Base/>
+      <ModuleProvider>
+        <Base />
+      </ModuleProvider>
     </>
   );
 }
