@@ -5,6 +5,7 @@ import CartModal from "./CardComp/Modal/CartModal";
 import ReactDOM from 'react-dom';
 import { useContext } from "react";
 import ModuleContext from "../../Store/module-context";
+import PopupToast from "./CardComp/Popup/PopupToast";
 const cartList1 = [
   { id: "al1", title: "Album 1", price: 30.5, imageUrl: "/Assets/Album 1.png" },
   { id: "al2", title: "Album 2", price: 45.5, imageUrl: "/Assets/Album 2.png" },
@@ -43,6 +44,8 @@ export default (props) => {
         </Container>
         {ReactDOM.createPortal(
         <CartModal></CartModal>, document.getElementById("cart-modal") )}
+
+        {ReactDOM.createPortal(<PopupToast/>,document.getElementById("popup-modal"))}
       </Container>
     </>
   );
