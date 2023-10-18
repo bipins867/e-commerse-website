@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import "./Card.css";
-//import helloImage from "../../../Assets/Album 1.png";
 import { Button, Card, Row, Col } from "react-bootstrap";
 import ModuleContext from "../../../Store/module-context";
 
