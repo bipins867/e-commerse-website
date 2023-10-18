@@ -13,7 +13,7 @@ export default (props) => {
           <Navbar.Collapse className="navbar-collapse">
             <ul className="navbar-nav ">
               <li className="nav-item  ">
-                <a className="nav-link text-light" href="/">
+                <a className="nav-link text-light" href="/home">
                   Home
                 </a>
               </li>
@@ -23,7 +23,7 @@ export default (props) => {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link  text-light" href="#">
+                <a className="nav-link  text-light" href="/">
                   Store
                 </a>
               </li>
