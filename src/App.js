@@ -4,12 +4,15 @@ import Base from './Components/Base';
 import ModuleProvider from './Store/ModuleProvider';
 
 
+
 function App() {
   return (
     <>
-      <ModuleProvider>
-        <Base />
-      </ModuleProvider>
+     
+        <ModuleProvider>
+          <Base />
+        </ModuleProvider>
+     
     </>
   );
 }

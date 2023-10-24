@@ -6,7 +6,7 @@ export default props=>{
 
     return (
       <>
-        <li className="list-group-item">
+        <li className="list-group-item ">
           <Row>
             <Col className="col-2 fw-bold">{item.date}</Col>
             <Col className="col-3">{item.title}</Col>
