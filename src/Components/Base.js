@@ -7,6 +7,7 @@ import Home from "./Home/Home";
 import RoutesConfig from "./RoutesConfig";
 import { Switch } from "react-router-dom/cjs/react-router-dom.min";
 import ContactUs from "./ContactUs/ContactUs";
+import ItemDetail from "./Body/ItemDetails/ItemDetail";
 
 
 // const HELLO = (props) => {
@@ -39,6 +40,9 @@ export default (props) => {
         </Route>
         <Route path='/contactus'>
           <ContactUs/>
+        </Route>
+        <Route path='/items/:itemId' exact>
+            <ItemDetail/>
         </Route>
       </Switch>
       

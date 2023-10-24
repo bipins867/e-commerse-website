@@ -2,8 +2,10 @@ import { useContext } from "react";
 import "./Card.css";
 import { Button, Card, Row, Col } from "react-bootstrap";
 import ModuleContext from "../../../Store/module-context";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 export default (props) => {
+  const itemId=props.cart.id;
   const moduleContext = useContext(ModuleContext);
   function checkItemInCart(id) {
     let cond = false;
@@ -55,7 +57,9 @@ export default (props) => {
       </Card.Header>
       <Card.Body>
         <div className="image-container">
-          <Card.Img className="image-style" src={props.cart.imageUrl} />
+          <Link to={`/items/${itemId}`}>
+            <Card.Img className="image-style" src={props.cart.imageUrl} />
+          </Link>
         </div>
       </Card.Body>
       <Card.Footer>
