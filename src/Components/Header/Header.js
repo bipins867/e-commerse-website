@@ -1,9 +1,12 @@
 import { Button, Container, Navbar } from "react-bootstrap";
 import HeaderButton from "./HeaderButton";
-import { Link,BrowserRouter as Router } from "react-router-dom";
+import { Link, BrowserRouter as Router } from "react-router-dom";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
+import { useContext } from "react";
+import ModuleContext from "../../Store/module-context";
 
 export default (props) => {
+  const moduleContext=useContext(ModuleContext)
   return (
     <>
       <Navbar expand="lg" className="fixed-top ">
@@ -27,16 +30,25 @@ export default (props) => {
                   About
                 </NavLink>
               </li>
-              <li className="nav-item">
-                <NavLink className="nav-link text-light" to="/">
-                  Store
-                </NavLink>
-              </li>
+              {moduleContext.isLoggedIn && (
+                <li className="nav-item">
+                  <NavLink className="nav-link text-light" to="/">
+                    Store
+                  </NavLink>
+                </li>
+              )}
               <li className="nav-item">
                 <NavLink className="nav-link text-light" to="/contactus">
                   Contact Us
                 </NavLink>
               </li>
+              {!moduleContext.isLoggedIn && (
+                <li className="nav-item">
+                  <NavLink className="nav-link text-light" to="/login">
+                    Login
+                  </NavLink>
+                </li>
+              )}
             </ul>
           </Navbar.Collapse>
           <HeaderButton />

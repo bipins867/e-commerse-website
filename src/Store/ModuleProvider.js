@@ -28,6 +28,9 @@ export default (props) => {
     show: false,
     dangerType:false
   });
+  const [isLoggedIn,setIsLoggedIn]=useState(false);
+  const [idToken,setIdToken]=useState('')
+
 
   function addItem2Cart(id) {
     const cartItem = [...productList1, ...productList2].filter(
@@ -61,8 +64,11 @@ export default (props) => {
     productList1: productList1,
     productList2: productList2,
     toastContent: toastContent,
-    setToastContent,
-    setToastContent,
+    setToastContent :setToastContent,
+    isLoggedIn:isLoggedIn,
+    setIsLoggedIn:setIsLoggedIn,
+    idToken:idToken,
+    setIdToken:setIdToken
   };
   return (
     <ModuleContext.Provider value={value}>
