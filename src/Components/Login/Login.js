@@ -50,7 +50,9 @@ export default (props) => {
           moduleContext.setIsLoggedIn(true)
           moduleContext.setIdToken(result['idToken'])
           localStorage.setItem('idToken',result['idToken'])
-            
+          localStorage.setItem('email',result.email)
+
+          moduleContext.fetchCartData(moduleContext.setCartItems,result.email)
         }
       })
       .catch((err) => {

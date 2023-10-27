@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ModuleContext from "./module-context";
+import { getCartData, postCartData } from "./CrudCrud";
 
 const cartElements = [];
 
@@ -20,6 +21,8 @@ const productList2 = [
 ];
 
 export default (props) => {
+  
+  
   const [moduleCond, setModuleCond] = useState(true);
   const [cartItems, setCartItems] = useState(cartElements);
   const [toastContent, setToastContent] = useState({
@@ -31,12 +34,23 @@ export default (props) => {
   const [isLoggedIn,setIsLoggedIn]=useState(false);
   const [idToken,setIdToken]=useState('')
 
+  
+  useEffect(()=>{
 
+    const email =localStorage.getItem('email')
+    const idToken=localStorage.getItem('idToken')
+
+    if(email && idToken){
+      setIsLoggedIn(true)
+      getCartData(setCartItems, email);
+    }
+  },[])
+  
   function addItem2Cart(id) {
     const cartItem = [...productList1, ...productList2].filter(
       (cart) => cart.id === id
     )[0];
-
+    postCartData(cartItem,localStorage.getItem('email'))
     setCartItems((prevState) => {
       const newState = [...prevState];
       newState.push(cartItem);
@@ -58,6 +72,7 @@ export default (props) => {
     moduleCond: moduleCond,
     setModuleCond: setModuleCond,
     cartItems: cartItems,
+    setCartItems:setCartItems,
     addItem: addItem2Cart,
     removeItem: removeItemFromCart,
     updateItem: updateItemInCart,
@@ -68,7 +83,8 @@ export default (props) => {
     isLoggedIn:isLoggedIn,
     setIsLoggedIn:setIsLoggedIn,
     idToken:idToken,
-    setIdToken:setIdToken
+    setIdToken:setIdToken,
+    fetchCartData:getCartData
   };
   return (
     <ModuleContext.Provider value={value}>

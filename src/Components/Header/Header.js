@@ -7,6 +7,12 @@ import ModuleContext from "../../Store/module-context";
 
 export default (props) => {
   const moduleContext=useContext(ModuleContext)
+  function logoutHandler(event){
+    localStorage.removeItem('email')
+    localStorage.removeItem('idToken')
+    moduleContext.setIsLoggedIn(false)
+    moduleContext.setIdToken(null)
+  }
   return (
     <>
       <Navbar expand="lg" className="fixed-top ">
@@ -47,6 +53,11 @@ export default (props) => {
                   <NavLink className="nav-link text-light" to="/login">
                     Login
                   </NavLink>
+                </li>
+              )}
+              {moduleContext.isLoggedIn && (
+                <li className="nav-item">
+                  <Button  variant="danger" onClick={logoutHandler}>Logout</Button>
                 </li>
               )}
             </ul>
